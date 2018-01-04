@@ -1,0 +1,42 @@
+[package]
+name = "f7"
+authors = ["David Karwowski <karwowski.david@gmail.com>"]
+description = "Board support crate for the STM32F429I Discovery Board"
+keywords = ["no-std", "arm", "cortex-m", "stm32"]
+repository = "https://github.com/dkarwowski/f7"
+documentation = "https://docs.rs/f7"
+license = "MIT"
+version = "0.2.0"
+
+[dependencies.stm32f7x]
+path = "../stm32f7x"
+
+
+[dependencies]
+bitflags = "1.0"
+static-ref = "0.2.0"
+volatile-register = "0.2.0"
+
+[dependencies.nb]
+git = "https://github.com/japaric/nb"
+
+[dependencies.embedded-hal]
+git = "https://github.com/japaric/embedded-hal"
+rev = "7d904f515d15fd5fe7ea34e18820ea83e2651fa2"
+
+[dependencies.cast]
+version = "0.2.0"
+default-features = false
+
+[dev-dependencies]
+cortex-m = "0.3.0"
+cortex-m-rtfm = "0.2.0"
+cortex-m-semihosting = "0.2.0"
+
+[dev-dependencies.cortex-m-rt]
+features = ["abort-on-panic"]
+version = "0.3.5"
+
+[profile.release]
+debug = true
+lto = true
