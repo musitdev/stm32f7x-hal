@@ -6,7 +6,7 @@ use core::marker::PhantomData;
 
 use hal::serial;
 use nb;
-use stm32f7x::{USART1, USART2, USART3};
+use stm32f7x::{USART1, USART6, USART2, USART3};
 
 use gpio::gpioa::{PA10, PA2, PA3, PA9};
 use gpio::gpiob::{PB10, PB11, PB6, PB7};
@@ -239,7 +239,7 @@ macro_rules! hal {
 
 hal! {
     USART1: (usart1, APB2, usart1en, usart1rst, pclk2),
-//    USART6: (usart6, APB2, usart6en, usart6rst, pclk2),
-//    USART2: (usart2, APB1, usart2en, usart2rst, pclk1),
-//    USART3: (usart3, APB1, usart3en, usart3rst, pclk1),
+    USART6: (usart6, APB2, usart6en, usart6rst, pclk2),
+    USART2: (usart2, APB1, usart2en, usart2rst, pclk1),
+    USART3: (usart3, APB1, usart3en, usart3rst, pclk1),
 }
