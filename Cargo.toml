@@ -9,8 +9,8 @@ license = "MIT"
 version = "0.2.0"
 
 [dependencies.stm32f7x]
-path = "../stm32f7x"
-
+git = "https://github.com/musitdev/stm32f7x"
+branch = "0.2.0-New-IO"
 
 [dependencies]
 cortex-m = "0.4.0"
