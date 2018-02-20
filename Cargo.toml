@@ -1,11 +1,11 @@
 [package]
+authors = ["Jorge Aparicio <jorge@japaric.io>", "musitdev <philippe.delrieu@free.fr>"]
+categories = ["embedded", "hardware-support", "no-std"]
+description = "HAL for the STM32F7xx family of microcontrollers"
+keywords = ["arm", "cortex-m", "stm32", "hal"]
+license = "MIT OR Apache-2.0"
 name = "stm32f7x-hal"
-authors = ["David Karwowski <karwowski.david@gmail.com>"]
-description = "Board support crate for the STM32F429I Discovery Board"
-keywords = ["no-std", "arm", "cortex-m", "stm32"]
-repository = "https://github.com/dkarwowski/f7"
-documentation = "https://docs.rs/f7"
-license = "MIT"
+repository = "https://github.com/musitdev/stm32f7x-hal"
 version = "0.2.0"
 
 [dependencies.stm32f7x]
