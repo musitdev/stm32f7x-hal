@@ -10,7 +10,7 @@ use stm32f7x::{USART1, USART6, USART2, USART3};
 
 use gpio::gpioa::{PA10, PA2, PA3, PA9};
 use gpio::gpiob::{PB10, PB11, PB6, PB7};
-use gpio::gpioc::{PC10, PC11, PC4, PC5};
+use gpio::gpioc::{PC10, PC11, PC4, PC5, PC6, PC7};
 use gpio::gpiod::{PD5, PD6, PD8, PD9};
 use gpio::gpioe::{PE0, PE1, PE15};
 use gpio::AF7;
@@ -46,6 +46,7 @@ pub unsafe trait TxPin<USART> {}
 /// RX pin - DO NOT IMPLEMENT THIS TRAIT
 pub unsafe trait RxPin<USART> {}
 
+//for discovery F4 to be removed
 unsafe impl TxPin<USART1> for PA9<AF7> {}
 unsafe impl TxPin<USART1> for PB6<AF7> {}
 unsafe impl TxPin<USART1> for PC4<AF7> {}
@@ -74,6 +75,11 @@ unsafe impl RxPin<USART3> for PB11<AF7> {}
 unsafe impl RxPin<USART3> for PC11<AF7> {}
 unsafe impl RxPin<USART3> for PD9<AF7> {}
 unsafe impl RxPin<USART3> for PE15<AF7> {}
+
+//Discovery STM32f7
+//USART6
+unsafe impl TxPin<USART6> for PC6<AF7> {}
+unsafe impl RxPin<USART6> for PC7<AF7> {}
 
 /// Serial abstraction
 pub struct Serial<USART, PINS> {
