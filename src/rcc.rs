@@ -206,7 +206,6 @@ impl CFGR {
         assert!(pclk2 <= 72_000_000);
 
         // adjust flash wait states
-        unsafe {
             acr.acr().write(|w| {
                 w.latency().bits(if sysclk <= 24_000_000 {
                     0b000
@@ -215,21 +214,20 @@ impl CFGR {
                 } else {
                     0b010
                 })
-            })
-        }
+            });
 
         let rcc = unsafe { &*RCC::ptr() };
         if let Some(pllmul_bits) = pllmul_bits {
             // use PLL as source
 
-            rcc.pllcfgr.write(|w| unsafe { w.pllm().bits(pllmul_bits) });
+            rcc.pllcfgr.write(|w| w.pllm().bits(pllmul_bits) );
 
             rcc.cr.write(|w| w.pllon().set_bit());
 
             while rcc.cr.read().pllrdy().bit_is_clear() {}
 
             // SW: PLL selected as system clock
-            rcc.cfgr.modify(|_, w| unsafe {
+            rcc.cfgr.modify(|_, w|
                 w.ppre2()
                     .bits(ppre2_bits)
                     .ppre1()
@@ -238,12 +236,12 @@ impl CFGR {
                     .bits(hpre_bits)
                     .sw()
                     .bits(0b10)
-            });
+            );
         } else {
             // use HSI as source
 
             // SW: HSI selected as system clock
-            rcc.cfgr.write(|w| unsafe {
+            rcc.cfgr.write(|w|
                 w.ppre2()
                     .bits(ppre2_bits)
                     .ppre1()
@@ -252,7 +250,7 @@ impl CFGR {
                     .bits(hpre_bits)
                     .sw()
                     .bits(0b00)
-            });
+            );
         }
 
         Clocks {

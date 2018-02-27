@@ -8,11 +8,8 @@ use hal::serial;
 use nb;
 use stm32f7x::{USART1, USART6, USART2, USART3};
 
-use gpio::gpioa::{PA10, PA2, PA3, PA9};
-use gpio::gpiob::{PB10, PB11, PB6, PB7};
-use gpio::gpioc::{PC10, PC11, PC4, PC5, PC6, PC7};
-use gpio::gpiod::{PD5, PD6, PD8, PD9};
-use gpio::gpioe::{PE0, PE1, PE15};
+use gpio::gpioc::{PC6, PC7};
+use gpio::gpiod::{PD5, PD6};
 use gpio::AF7;
 use rcc::{APB1, APB2, Clocks};
 use time::Bps;
@@ -99,7 +96,7 @@ macro_rules! hal {
 
                     let brr = clocks.$pclkX().0 / baud_rate.0;
                     assert!(brr >= 16, "impossible baud rate");
-                    usart.brr.write(|w| unsafe { w.bits(brr) });
+                    usart.brr.write(|w| w.bits(brr) );
 
                     // UE: enable USART
                     // RE: enable receiver

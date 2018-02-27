@@ -14,3 +14,7 @@ pub mod flash;
 
 pub mod gpio;
 pub mod serial;
+pub mod timer;
+pub mod spi;
+pub mod i2c;
+pub mod delay;
