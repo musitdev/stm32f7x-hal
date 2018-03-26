@@ -1,15 +1,15 @@
 //! Serial
 
-
 use core::ptr;
 use core::marker::PhantomData;
 
 use hal::serial;
 use nb;
-use stm32f7x::{USART1, USART6, USART2, USART3};
+use stm32f7x::{USART1, USART2, USART3, USART6};
 
 use gpio::gpioc::{PC6, PC7};
 use gpio::gpiod::{PD5, PD6};
+use gpio::gpiog::{PG14, PG9};
 use gpio::AF7;
 use rcc::{APB1, APB2, Clocks};
 use time::Bps;
@@ -50,6 +50,8 @@ unsafe impl RxPin<USART2> for PD6<AF7> {}
 //USART6
 unsafe impl TxPin<USART6> for PC6<AF7> {}
 unsafe impl RxPin<USART6> for PC7<AF7> {}
+unsafe impl TxPin<USART6> for PG14<AF7> {}
+unsafe impl RxPin<USART6> for PG9<AF7> {}
 
 /// Serial abstraction
 pub struct Serial<USART, PINS> {
