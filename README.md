@@ -1,4 +1,4 @@
-# f7
+# STM32f7x HAL
 
 Board support crate for the STM32f7x Boards.
 

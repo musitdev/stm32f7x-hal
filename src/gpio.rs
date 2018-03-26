@@ -310,7 +310,7 @@ macro_rules! gpio {
 
                         // alternate function mode
                         let mode = 0b10;
-                        moder.moder().modify(|r, w| 
+                        moder.moder().modify(|r, w|
                             w.bits((r.bits() & !(0b11 << offset)) | (mode << offset))
                         );
 
@@ -359,7 +359,7 @@ macro_rules! gpio {
                             .modify(|r, w| w.bits(r.bits() & !(0b11 << offset)));
 
                         // pull-down
-                        pupdr.pupdr().modify(|r, w| 
+                        pupdr.pupdr().modify(|r, w|
                             w.bits((r.bits() & !(0b11 << offset)) | (0b10 << offset))
                         );
 
@@ -380,7 +380,7 @@ macro_rules! gpio {
                             .modify(|r, w|  w.bits(r.bits() & !(0b11 << offset)));
 
                         // pull-up
-                        pupdr.pupdr().modify(|r, w| 
+                        pupdr.pupdr().modify(|r, w|
                             w.bits((r.bits() & !(0b11 << offset)) | (0b01 << offset))
                         );
 
@@ -397,7 +397,7 @@ macro_rules! gpio {
 
                         // general purpose output mode
                         let mode = 0b01;
-                        moder.moder().modify(|r, w| 
+                        moder.moder().modify(|r, w|
                             w.bits((r.bits() & !(0b11 << offset)) | (mode << offset))
                         );
 
@@ -592,4 +592,23 @@ gpio!(GPIOF, gpiof, gpiof, gpiofen, gpiofrst, PFx, [
     PF6: (pf6, 6, Input<Floating>, AFRL),
     PF9: (pf9, 9, Input<Floating>, AFRH),
     PF10: (pf10, 10, Input<Floating>, AFRH),
+]);
+
+gpio!(GPIOG, gpiog, gpiog, gpiogen, gpiogrst, PGx, [
+    PG0: (pg0, 0, Input<Floating>, AFRL),
+    PG1: (pg1, 1, Input<Floating>, AFRL),
+    PG2: (pg2, 2, Input<Floating>, AFRL),
+    PG3: (pg3, 3, Input<Floating>, AFRL),
+    PG4: (pg4, 4, Input<Floating>, AFRL),
+    PG5: (pg5, 5, Input<Floating>, AFRL),
+    PG6: (pg6, 6, Input<Floating>, AFRL),
+    PG7: (pg7, 7, Input<Floating>, AFRL),
+    PG8: (pg8, 8, Input<Floating>, AFRH),
+    PG9: (pg9, 9, Input<Floating>, AFRH),
+    PG10: (pg10, 10, Input<Floating>, AFRH),
+    PG11: (pg11, 11, Input<Floating>, AFRH),
+    PG12: (pg12, 12, Input<Floating>, AFRH),
+    PG13: (pg13, 13, Input<Floating>, AFRH),
+    PG14: (pg14, 14, Input<Floating>, AFRH),
+    PG15: (pg15, 15, Input<Floating>, AFRH),
 ]);
